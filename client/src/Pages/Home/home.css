@@ -71,7 +71,8 @@
 }
 
 .wastes h1,
-.stats .right .right_subcontainer h1 {
+.stats .right .right_subcontainer h1,
+.testimonial h1 {
   text-align: center;
   font-size: 2.5rem;
 }
@@ -216,4 +217,13 @@
   background-color: var(--apple-green);
   height: inherit;
   width: 1%;
+}
+
+.testimonials_container {
+  margin: 4em auto;
+}
+
+.testimonial {
+  background: var(--bg-grey);
+  padding: 4em 0;
 }
