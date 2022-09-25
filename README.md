@@ -17,4 +17,11 @@ Nav Bar
 - Request Pickup -- Login and Register 
 
 
-
+Layout 
+- NavBar
+- Header (Image w heading) 
+- Types of waste 
+- Recycle today for a better tmw 
+- Stats
+- Testimonials 
+- Footers and fake partners 
