@@ -8,3 +8,13 @@
 - Black: `#323232`
 - text-grey: `#808080`
 - light-grey: `#e5e5e5`
+
+Nav Bar
+- Home 
+- About Us 
+- Services
+- Contact Us
+- Request Pickup -- Login and Register 
+
+
+
