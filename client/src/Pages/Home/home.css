@@ -70,7 +70,8 @@
   margin: 6em auto;
 }
 
-.wastes h1 {
+.wastes h1,
+.stats .right .right_subcontainer h1 {
   text-align: center;
   font-size: 2.5rem;
 }
@@ -93,8 +94,7 @@
   cursor: context-menu;
   text-align: center;
   border-radius: 0.3em;
-  background: var(--light-grey);
-  background: #f5f5f5;
+  background: var(--bg-grey);
 }
 
 .waste_btn_container .btn h5 {
@@ -127,9 +127,93 @@
   left: 50%;
   width: 20px;
   height: 20px;
-  border-radius: 0 0 0 3px;
+  border-radius: 0 0 0 .3em;
   border-width: 0;
   transform: translateX(-50%) rotate(-45deg);
   transition-delay: 0.07s;
   background-color: var(--emerald-green);
+}
+
+/*
+* STATS
+*/
+
+.stats {
+  display: flex;
+  position: relative;
+  margin: 10em auto;
+}
+
+.stats .left {
+  width: 40%;
+}
+
+.stats .left img {
+  width: 100%;
+  height: 80vh;
+}
+
+.stats .right {
+  position: absolute;
+  margin-top: 4em;
+  margin-left: -4em;
+  right: 0;
+  top: .5em;
+  width: 70%;
+  z-index: -1;
+  height: 100%;
+  background: var(--bg-grey);
+}
+
+.stats .right .right_subcontainer {
+  margin: 5em 14em;
+}
+
+.stats .right .right_subcontainer h1 {
+  text-align: left;
+}
+
+.stats .right_subcontainer ul {
+  list-style: none;
+  padding: 0;
+}
+
+.stats .right_subcontainer ul li {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  margin-bottom: 0.5em;
+  font-weight: 500;
+}
+
+.stats .right_subcontainer ul li .icon {
+  color: var(--apple-green);
+}
+
+.stats .right_subcontainer .progress_group h6 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: .2em;
+}
+
+.stats .right_subcontainer .progress_container {
+  margin: 3em auto;
+}
+
+.stats .right_subcontainer .progress_group h6 span:last-of-type {
+  float: right;
+}
+
+.stats .progress_container .progress_group .progress_bar {
+  height: 0.4em;
+  width: 100%;
+  padding-bottom: .2em;
+  border-bottom: .2em solid var(--black);
+  margin-bottom: 2em;
+}
+
+.stats .progress_container .progress_group .progress_bar .bar {
+  background-color: var(--apple-green);
+  height: inherit;
+  width: 1%;
 }
