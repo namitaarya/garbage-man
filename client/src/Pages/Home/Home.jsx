@@ -3,6 +3,7 @@ import Header from './Header'
 import './home.css'
 import Stats from './Stats'
 import Wastes from './Wastes'
+import Counter from './counter'
 
 const Home = () => {
   return (
@@ -10,6 +11,7 @@ const Home = () => {
       <Header />
       <Wastes />
       <Stats />
+      <Counter />
     </div>
   )
 }

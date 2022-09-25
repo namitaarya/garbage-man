@@ -1,0 +1,12 @@
+.textCard{
+    font-size: 30px;
+    color: white;
+    font-weight: bold;
+}
+
+.cardCounter{
+    padding: 50px;
+    background: rgba(0, 0, 0, 0.5);
+    position: relative
+
+}
