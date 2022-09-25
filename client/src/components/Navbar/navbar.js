@@ -1,6 +1,6 @@
 import React,{useEffect} from 'react';
 import './navbar.scss';
-import Logo from 'D:/garbage-man/client/src/assets/logo.png'
+// import Logo from 'D:/garbage-man/client/src/assets/logo.png'
 
 const NavBar=() => {
   const [scrolled,setScrolled]=React.useState(false);
@@ -25,7 +25,7 @@ const NavBar=() => {
   return (
     <header className={x.join(" ")}>
         <div className="logo">
-          <img src={Logo} alt="Logo" title="Logo" />
+          <img src="./Asset/logo.png" alt="Logo" title="Logo" />
         </div>
         {/* no css given yet to text */}
         <div className="text"> 
