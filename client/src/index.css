@@ -1,0 +1,26 @@
+:root {
+  --font-head: "Oswald", sans-serif;
+  --font-body: "Poppins", sans-serif;
+  --sap-green: "#9cc026";
+  --emerald-green: "#54be73";
+  --apple-green: "#78bf4d";
+  --text-grey: "#808080";
+  --light-grey: "#e5e5e5";
+
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-head);
+  margin: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+}
