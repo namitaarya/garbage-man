@@ -5,3 +5,6 @@
 - Sap Green: `#9cc026`
 - Green 2: `#54be73`
 - Green 3: `#78bf4d`
+- Black: `#323232`
+- text-grey: `#808080`
+- light-grey: `#e5e5e5`
