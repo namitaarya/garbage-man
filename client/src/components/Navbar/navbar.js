@@ -42,9 +42,15 @@ const NavBar = () => {
           <li>
             <a href="#">Contact Us</a>
           </li>
-          <li>
-            <a href="#">SignIn/SignUp</a>
-          </li>
+          
+          <div class="dropdown">
+            <button class="dropbtn">SignIn/SignUp</button>
+            <div class="dropdown-content">
+              <a href="/login-user">Sign In</a>
+              <a href="/register-user">Sign Up</a>
+            </div>
+          </div>
+          
         </ul>
       </nav>
     </header>
