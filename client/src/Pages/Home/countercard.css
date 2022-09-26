@@ -7,6 +7,12 @@
 .cardCounter{
     padding: 50px;
     background: rgba(0, 0, 0, 0.5);
-    position: relative
+    position: relative;
+    height: 16rem;
+    width: 50%;
 
 }
+/* .col-4{
+    width: 20%;
+    height: 16rem;
+} */
