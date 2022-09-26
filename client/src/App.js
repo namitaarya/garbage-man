@@ -2,6 +2,9 @@ import "./App.css";
 import { Home, AboutUs, RegisterUser, LoginUser } from "./Pages";
 import { NavBar } from "./components";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Footer } from "./components"
+
+// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // import NavBar from "./components/navbar"
 
 function App() {
