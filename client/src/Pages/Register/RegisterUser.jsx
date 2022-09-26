@@ -9,6 +9,8 @@ const RegisterUser = () => {
     password: "",
   });
 
+  const [role, setRole] = useState("CITIZEN");
+
   const [records, setRecords] = useState([]);
   const handleInput = (event) => {
     const name = event.target.name;
@@ -55,7 +57,7 @@ const RegisterUser = () => {
                 type="text"
                 value={userData.name}
                 onChange={handleInput}
-                placeholder="Enter Name"
+                placeholder="Enter User Name/Organization Name"
               />
             </div>
             <div className="form_group">

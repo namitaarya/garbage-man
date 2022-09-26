@@ -16,8 +16,8 @@ const MainCompAbout = (props) => {
         <h3>{props.data.heading}</h3>
         <p>{props.data.para}</p>
         <ol>
-          {props.data.contentList.map((item) => (
-            <li>
+          {props.data.contentList.map((item, idx) => (
+            <li key={idx}>
               <h4>{item.head}</h4>
               <p>{item.content}</p>
             </li>
