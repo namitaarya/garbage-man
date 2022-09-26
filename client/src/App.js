@@ -19,7 +19,6 @@ function App() {
         </Route>
       </Routes>
     </BrowserRouter>
-      <Home />
       <Footer />
     </div>
   );
