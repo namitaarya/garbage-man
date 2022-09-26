@@ -1,6 +1,6 @@
-import './App.css';
-import { Home, AboutUs } from './Pages';
-import { NavBar } from "./components"
+import "./App.css";
+import { Home, AboutUs, RegisterUser, LoginUser } from "./Pages";
+import { NavBar } from "./components";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import NavBar from "./components/navbar"
 
@@ -9,13 +9,15 @@ function App() {
     <div className="App">
       <NavBar />
       <BrowserRouter>
-      <Routes>
-        <Route path = '/'>
-          <Route index element = {<Home />}></Route>
-          <Route path = "aboutus" element = {<AboutUs />}></Route>
-        </Route>
-      </Routes>
-    </BrowserRouter>
+        <Routes>
+          <Route path="/">
+            <Route index element={<Home />}></Route>
+            <Route path="aboutus" element={<AboutUs />}></Route>
+            <Route path="register-user" element={<RegisterUser />} />
+            <Route path="login-user" element={<LoginUser />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
