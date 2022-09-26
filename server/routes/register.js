@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const User = require("../models/user.model");
 
-exports.registerPOST = async (req, res) => {
+exports.registerUserPOST = async (req, res) => {
   const user = req.body;
 
   const username = await User.findOne({ name: user.name });
@@ -21,6 +21,6 @@ exports.registerPOST = async (req, res) => {
     });
 
     dbUser.save();
-    res.json({ message: "Success" });
+    res.json({ message: "Success", status: 'ok' });
   }
 };
