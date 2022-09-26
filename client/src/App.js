@@ -3,6 +3,7 @@ import { Home, AboutUs, RegisterUser, LoginUser, Dashboard } from "./Pages";
 import { NavBar } from "./components";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Footer } from "./components"
+import ContactUs from "./Pages/ContactUs/contactus";
 
 // import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // import NavBar from "./components/navbar"
@@ -19,6 +20,7 @@ function App() {
             <Route path="register-user" element={<RegisterUser />} />
             <Route path="login-user" element={<LoginUser />} />
             <Route path="dashboard" element={<Dashboard />} />
+            <Route path="contact-us" element={<ContactUs />}/>
           </Route>
         </Routes>
       </BrowserRouter>
