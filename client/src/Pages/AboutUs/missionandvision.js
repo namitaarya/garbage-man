@@ -16,7 +16,7 @@ const Mission = () => {
   };
   return (
     <div className="wastes" style={{margin: '4em auto'}}>
-      <h1>Our mission and Vision</h1>
+      <h1>Our Mission and Vision</h1>
       <div className="waste__container">
         <div
           className="waste_btn_container"

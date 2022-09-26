@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./navbar.scss";
 // import Logo from 'D:/garbage-man/client/src/assets/logo.png'
 
@@ -13,6 +13,7 @@ const NavBar = () => {
       setScrolled(false);
     }
   };
+
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
   });
@@ -21,6 +22,7 @@ const NavBar = () => {
   if (scrolled) {
     x.push("scrolled");
   }
+
   return (
     <header className={x.join(" ")}>
       <div className="logo">
@@ -42,14 +44,14 @@ const NavBar = () => {
           <li>
             <a href="#">Contact Us</a>
           </li>
-          
+
           <div class="dropdown">
             <button class="dropbtn">SignIn/SignUp</button>
             <div class="dropdown-content">
               <a href="/login-user">Sign In</a>
               <a href="/register-user">Sign Up</a>
             </div>
-          </div>
+            </div>
           
         </ul>
       </nav>
