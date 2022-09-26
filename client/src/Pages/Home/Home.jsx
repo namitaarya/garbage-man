@@ -5,6 +5,7 @@ import Stats from "./Stats";
 import Wastes from "./Wastes";
 import Counter from "./counter";
 import Testimonials from "./Testimonials";
+import { Partners } from "../../components";
 
 const Home = () => {
   
@@ -15,6 +16,7 @@ const Home = () => {
       <Counter />
       <Stats />      
       <Testimonials />
+      <Partners />
     </div>
   );
 };
