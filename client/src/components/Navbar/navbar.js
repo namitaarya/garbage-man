@@ -40,7 +40,7 @@ const NavBar = () => {
             <a href="/aboutus">About Us</a>
           </li>
           <li>
-            <a href="#">Contact Us</a>
+            <a href="/contact-us">Contact Us</a>
           </li>
           
           <div class="dropdown">
