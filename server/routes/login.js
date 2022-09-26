@@ -11,8 +11,6 @@ exports.loginUser = async (req, res) => {
     return { status: "error", error: "Invalid login" };
   }
 
-  console.log(user.password, req.body.email);
-
   const isPasswordValid = await bcrypt.compare(
     req.body.password,
     user.password
