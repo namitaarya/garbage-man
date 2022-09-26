@@ -42,9 +42,9 @@ const Header = () => {
             }}
           >
             <div className="slider-container">
-              <div className="slider_btn"> {item.btn} </div>
               <h1>{item.heading}</h1>
               <p>{item.paragraph}</p>
+              <div className="slider_btn"> {item.btn} </div>
             </div>
           </SwiperSlide>
         ))}
