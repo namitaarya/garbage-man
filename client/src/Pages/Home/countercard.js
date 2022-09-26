@@ -1,6 +1,12 @@
 import React from "react";
 import "./countercard.css";
-import CountUp from "react-countup";
+import CountUp from 'react-countup'
+
+import {
+  Card,
+  CardText,
+  CardBody,
+} from "reactstrap";
 
 import { Card, CardText, CardBody, CardTitle, CardFooter } from "reactstrap";
 
