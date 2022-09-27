@@ -56,7 +56,6 @@ export default function ContactUs(){
               aria-hidden="false"
               tabIndex="0"
             />
-          {/* <img src="/Asset/contact.jpg" alt="" /> */}
         </div>
       </div>
     </div>

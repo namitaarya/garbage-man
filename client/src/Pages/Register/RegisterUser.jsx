@@ -19,11 +19,12 @@ const RegisterUser = () => {
     setUserData({ ...userData, [name]: value });
   };
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newRecord = { ...userData };
     setRecords([...records, newRecord]);
-    setUserData({ name: "", email: "", contact: "", password: "" });
+    setUserData({ name: "", email: "", contact: "", password: ""});
 
     const apiCall =
       role === "CITIZEN"
@@ -92,7 +93,6 @@ const RegisterUser = () => {
                 placeholder="Enter Password"
               />
             </div>
-
             <div className="form_group">
               <select
                 name="role"
