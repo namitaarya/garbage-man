@@ -28,7 +28,8 @@
   width: 90%;
 }
 
-.register__form .form__wrapper .left .form_group input {
+.register__form .form__wrapper .left .form_group input,
+.register__form .form__wrapper .left select {
   padding: 1em;
   border: 1px solid rgba(119, 119, 119, 0.2);
   outline: none;
@@ -36,7 +37,8 @@
   width: inherit;
 }
 
-.register__form .form__wrapper .left .form_group input:focus {
+.register__form .form__wrapper .left .form_group input:focus,
+.register__form .form__wrapper .left select:focus {
   border: 0.12em solid var(--emerald-green);
 }
 
@@ -51,7 +53,10 @@
   font-size: 1rem;
 }
 
-
 .login_form .form__wrapper .right img {
   height: 55vh;
+}
+
+.register__form .form__wrapper .left select {
+  width: 95%;
 }
