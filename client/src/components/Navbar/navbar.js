@@ -52,7 +52,7 @@ const NavBar = () => {
       </div>
       {/* no css given yet to text */}
 
-      <nav className="navigation">
+      <nav className="navigation center-list">
         <ul>
           <li>
             <a href="/">Home</a>
@@ -63,6 +63,8 @@ const NavBar = () => {
           <li>
             <a href="/contact-us">Contact Us</a>
           </li>
+          </ul>
+        </nav>
 
           {isLoggedIn ? (
             <li className="logout">
@@ -77,8 +79,6 @@ const NavBar = () => {
               </div>
             </div>
           )}
-        </ul>
-      </nav>
     </header>
   );
 };

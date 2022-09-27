@@ -16,13 +16,14 @@ const RequestPickup = () => {
       );
   }, []);
 
+  const [type, setType] = useState("domestic-waste");
+
   const [pickupData, setPickupData] = useState({
     type: "",
+    imageurl: "",
     quantity: "",
-    location: {
-      lng: "",
-      lat: "",
-    },
+    lng: "",
+    lat: "",
   });
   const [longitude, setLongitude] = useState("");
   const [latitude, setLatitude] = useState("");
@@ -88,18 +89,32 @@ const RequestPickup = () => {
     setPickupData({ ...pickupData, [name]: value });
   };
 
+  // const handleInputUrl = (event) => {
+  //   const str = event.target.value;
+  //   // const img_tag = str.substring(str.indexOf("/d/") + 3, str.lastIndexOf("/view"));
+  //   // console.log(img_tag)
+  //   setPickupData({imageurl: str})
+  // }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newRecord = { ...pickupData };
     setRecords([...records, newRecord]);
+    console.log(records);
     setPickupData({
       type: "",
       quantity: 0,
-      location: {
-        lng: "",
-        lat: "",
-      },
+      lng: "",
+      lat: "",
     });
+
+    // const response = await fetch("http://localhost:1337/request-pickup", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-type": "application/json",
+    //   },
+    //   body: JSON.stringify(records)
+    // });
   };
   return (
     <div className="register__form">
@@ -112,13 +127,37 @@ const RequestPickup = () => {
           </p>
           <form action="" className="register__form" onSubmit={handleSubmit}>
             <div className="form_group">
-              <input
-                type="text"
+              <select
                 name="type"
-                value={pickupData.type}
-                onChange={handleInput}
-                placeholder="Enter Type Of Waste For Pickup"
                 id=""
+                value={type}
+                onChange={(e) => {
+                  setType(e.target.value);
+                  setPickupData({
+                    ...pickupData,
+                    type: type,
+                    lng: longitude,
+                    lat: latitude,
+                  });
+                  // console.log(type);
+                }}
+              >
+                <option>Domestic Waste</option>
+                <option value="industry-waste">Industry Waste</option>
+                <option value="food-waste">Food Waste</option>
+                <option value="chemical-waste">Chemical Waste</option>
+                <option value="metal-waste">Metal Waste</option>
+                <option value="medical-waste">Medical Waste</option>
+              </select>
+            </div>
+
+            <div className="form_group">
+              <input
+                name="imageurl"
+                type="text"
+                value={pickupData.imageurl}
+                onChange={handleInput}
+                placeholder="Enter image drive link"
               />
             </div>
             <div className="form_group">

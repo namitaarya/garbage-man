@@ -30,9 +30,11 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="dashboard">
-      <h1 className="head">Dashboard</h1>
-      {renderDash()}
+    <div className="dashboard__wrapper">
+      <div className="dashboard">
+        <h1 className="head">Dashboard</h1>
+        {renderDash()}
+      </div>
     </div>
   );
 };

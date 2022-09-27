@@ -2,15 +2,18 @@
   font-size: 30px;
   color: white;
   font-weight: bold;
+  text-align: center;
 }
 
 .cardCounter{
     padding: 50px;
     background: rgba(0, 0, 0, 0.5);
     position: relative;
-    height: 16rem;
-    width: 50%;
-
+    height: 10rem;
+    width: 10rem;
+    text-align: center;
+    padding-bottom: 70px;
+    border-radius: 10%;
 }
 /* .col-4{
     width: 20%;
