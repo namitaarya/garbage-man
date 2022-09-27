@@ -12,9 +12,11 @@
   
   .register__form .form__wrapper .left {
     width: 60%;
+    margin-top: 10vh;
   }
   .register__form .form__wrapper .right {
     width: 40%;
+    margin-top: 10vh;
   }
   
   .register__form .form__wrapper .right img {

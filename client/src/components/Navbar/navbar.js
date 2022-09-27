@@ -33,7 +33,7 @@ const NavBar = () => {
       </div>
       {/* no css given yet to text */}
 
-      <nav className="navigation">
+      <nav className="navigation center-list">
         <ul>
           <li>
             <a href="/">Home</a>
@@ -44,16 +44,19 @@ const NavBar = () => {
           <li>
             <a href="/contact-us">Contact Us</a>
           </li>
+          </ul>
+        </nav>
 
-          <div class="dropdown">
-            <button class="dropbtn">SignIn/SignUp</button>
-            <div class="dropdown-content">
+        <nav className="navigation">
+          <ul>
+          <li className="dropdown">
+            <a href="/">SignIn / SignUp</a>
+            <div className="dropdown-content">
               <a href="/login-user">Sign In</a>
-              <a href="/register-user">Sign Up</a>
+                <a href="/register-user">Sign Up</a>
             </div>
-            </div>
-          
-        </ul>
+          </li>
+       </ul>
       </nav>
     </header>
   );

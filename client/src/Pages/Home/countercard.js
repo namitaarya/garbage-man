@@ -8,8 +8,10 @@ export default function CounterCards() {
     <div
       style={{
         display: "flex",
-        justifyContent: "space-between",
-        margin: '100px 100px 0',
+        textAlign: "center",
+        gap: "5rem",
+        marginTop: "30%",
+        marginLeft: "10%"
       }}
     >
       <div class="col-4">
@@ -22,10 +24,12 @@ export default function CounterCards() {
           </CardBody>
         </Card>
       </div>
+
       <div class="col-4">
         <Card className="cardCounter">
+        <CardText className="textCard">Workers Associated</CardText>
           <CardBody>
-            <CardText className="textCard">Workers Associated</CardText>
+            
             <div style={{ fontSize: "50px", color: "white" }}>
               <CountUp start={0} end={600} duration={5} />+
             </div>
@@ -36,8 +40,8 @@ export default function CounterCards() {
         <Card className="cardCounter">
           <CardBody>
             <CardText className="textCard">Project Done</CardText>
-            <div style={{ fontSize: "50px", color: "white" }}>
-              <CountUp start={0} end={800} duration={5} /> +{" "}
+            <div style={{ fontSize: "50px", color: "white", textAlign: "center"}}>
+              <CountUp start={0} end={800} duration={5} />+{" "}
             </div>
           </CardBody>
         </Card>
@@ -45,7 +49,7 @@ export default function CounterCards() {
       <div class="col-4">
         <Card className="cardCounter">
           <CardBody>
-            <CardText className="textCard">Smiles</CardText>
+            <CardText className="textCard">Smiles Spread</CardText>
             <div style={{ fontSize: "50px", color: "white" }}>
               <CountUp start={0} end={700} duration={6} />+{" "}
             </div>
