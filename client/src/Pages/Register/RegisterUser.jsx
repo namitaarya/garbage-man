@@ -20,11 +20,18 @@ const RegisterUser = () => {
     setUserData({ ...userData, [name]: value });
   };
 
+  const handleInputUrl = (event) => {
+    const str = event.target.value;
+    // const img_tag = str.substring(str.indexOf("/d/") + 3, str.lastIndexOf("/view"));
+    // console.log(img_tag)
+    setUserData({imageurl: str})
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newRecord = { ...userData };
     setRecords([...records, newRecord]);
-    setUserData({ name: "", email: "", contact: "", password: "" });
+    setUserData({ name: "", email: "", contact: "", password: "", imageurl: "" });
 
     const apiCall =
       role === "CITIZEN"
@@ -95,22 +102,23 @@ const RegisterUser = () => {
             </div>
             <div className="form_group">
               <input
-                name="imagelink"
+                name="imageurl"
                 type="text"
                 value={userData.imageurl}
-                onChange={handleInput}
+                onChange={handleInputUrl}
                 placeholder="Enter image drive link"
               />
-            </div> 
+            </div>
             <div className="form_group">
               <select>
+                <option selected value="Domestic Waste">
+                  Domestic Waste
+                </option>
                 <option value="industry-waste">Industry Waste</option>
-                <option value="domestic-waste">Domestic-waste</option>
                 <option value="food-waste">Food Waste</option>
                 <option value="chemical-waste">Chemical Waste</option>
                 <option value="metal-waste">Metal Waste</option>
                 <option value="medical-waste">Medical Waste</option>
-                <option selected value="Domestic Waste">Domestic Waste</option>
               </select>
             </div>
 
