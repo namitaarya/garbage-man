@@ -13,6 +13,7 @@ exports.verifyJWT = (req, res, next) => {
       req.user = {};
       req.user.id = decoded.id;
       req.user.name = decoded.name;
+      req.user.role = decoded.role;
       next();
     });
   } else {

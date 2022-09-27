@@ -1,11 +1,20 @@
 const User = require("../models/user.model");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const Collector = require("../models/collector.model");
 
 exports.loginUser = async (req, res) => {
-  const user = await User.findOne({
+  let role = "citizen";
+  let user = await User.findOne({
     email: req.body.email.toLowerCase(),
   });
+
+  if (!user) {
+    role = "collector";
+    user = await Collector.findOne({
+      email: req.body.email.toLowerCase(),
+    });
+  }
 
   if (!user) {
     return { status: "error", error: "Invalid login" };
@@ -22,14 +31,15 @@ exports.loginUser = async (req, res) => {
         id: user._id,
         name: user.name,
         email: user.email,
+        role: role
       },
       process.env.SECRET,
       {
         expiresIn: 86400,
       }
     );
-
-    return res.json({ status: "ok", user: token });
+    console.log(token);
+    return res.json({ status: "ok", user: token, role: role });
   } else {
     return res.json({ status: "error", user: false });
   }

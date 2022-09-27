@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const LoginUser = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,8 +24,8 @@ const LoginUser = () => {
 
     if (data.user) {
       localStorage.setItem("token", data.user);
-      alert("Login Successful");
-      window.location.href = "/dashboard";
+      alert("Login Successful ");
+      navigate('/dashboard')
     } else {
       alert("Please check your username and password");
     }

@@ -15,9 +15,10 @@ const login = require("./routes/login");
 const JWT = require("./middleware/verifyJWT");
 
 app.post("/register-user", register.registerUserPOST);
+app.post ('/register-collector', register.registerCollectorPOST)
 app.post("/login-user", login.loginUser);
 app.get("/isAuthenticated", JWT.verifyJWT, (req, res) => {
-  return res.json({ isLoggedIn: true, username: req.user.name });
+  return res.json({ isLoggedIn: true, username: req.user.name, role: req.user.role, id: req.user.id });
 });
 
 app.listen(PORT, () => {

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { PreviousPickup, RequestPickup } from "../../components";
-
+import Collector from "./Collector";
 import "./dash.css";
+import User from "./User";
 
 const Dashboard = () => {
-  const [currTab, setCurrTab] = useState('Request Pickup')
+  const [role, setRole] = useState("");
   const navigate = useNavigate();
   useEffect(() => {
     fetch("http://localhost:1337/isAuthenticated", {
@@ -14,29 +14,25 @@ const Dashboard = () => {
       },
     })
       .then((res) => res.json())
-      .then((data) =>
-        data.isLoggedIn ? navigate("/dashboard") : navigate("/login-user")
-      );
+      .then((data) => {
+        if (data.isLoggedIn) {
+          setRole(data.role);
+          navigate("/dashboard");
+        } else {
+          navigate("/login-user");
+        }
+      });
   }, []);
 
-  const changeTab = (option) => {
-    switch (option) {
-      case 'Request Pickup': return <RequestPickup />
-      case 'Previous Pickup': return <PreviousPickup />
-    }
-  }
+  const renderDash = () => {
+    if (role == "citizen") return <User />;
+    else if (role == "collector") return <Collector />;
+  };
 
   return (
     <div className="dashboard">
-      <h1 className="head">User Dashboard</h1>
-      <div className="btn_container">
-        <div className="btn" onClick={() => {setCurrTab('Request Pickup')}}>Request Pickup</div>
-        <div className="btn" onClick={() => {setCurrTab('Previous Pickup')}}>Previous Pickups</div>
-      </div>
-      {
-        changeTab(currTab)
-      }
-      {/* <RequestPickup /> */}
+      <h1 className="head">Dashboard</h1>
+      {renderDash()}
     </div>
   );
 };
