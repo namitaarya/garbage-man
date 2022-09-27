@@ -7,6 +7,7 @@ const RegisterUser = () => {
     email: "",
     contact: "",
     password: "",
+    imageurl: "",
   });
 
   const [role, setRole] = useState("CITIZEN");
@@ -91,6 +92,26 @@ const RegisterUser = () => {
                 onChange={handleInput}
                 placeholder="Enter Password"
               />
+            </div>
+            <div className="form_group">
+              <input
+                name="imagelink"
+                type="text"
+                value={userData.imageurl}
+                onChange={handleInput}
+                placeholder="Enter image drive link"
+              />
+            </div> 
+            <div className="form_group">
+              <select>
+                <option value="industry-waste">Industry Waste</option>
+                <option value="domestic-waste">Domestic-waste</option>
+                <option value="food-waste">Food Waste</option>
+                <option value="chemical-waste">Chemical Waste</option>
+                <option value="metal-waste">Metal Waste</option>
+                <option value="medical-waste">Medical Waste</option>
+                <option selected value="Domestic Waste">Domestic Waste</option>
+              </select>
             </div>
 
             <div className="form_group">
