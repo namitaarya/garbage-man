@@ -7,7 +7,7 @@ export default function CardsGroup() {
         <div className="containern">
           <h1 style={{ textAlign: "center", fontWeight: '500', fontSize: '2rem', margin: '.5em auto' }}>Work Safely</h1>
           <div className="contentn">
-            <a href="https://unsplash.com/photos/HkTMcmlMOUQ" target="_blank">
+            {/* <a href="https://unsplash.com/photos/HkTMcmlMOUQ" target="_blank"> */}
               <div className="contentn-overlay"></div>
               <img className="contentn-image" src="/Asset/card1.jpg" />
               <div className="contentn-details fadeIn-top">
@@ -17,14 +17,14 @@ export default function CardsGroup() {
                   thought into new and refines form Recycling
                 </p>
               </div>
-            </a>
+            {/* </a> */}
           </div>
         </div>
 
         <div className="containern">
           <h1 style={{ textAlign: "center", fontWeight: '500', fontSize: '2rem', margin: '.5em auto' }}>Waste Collection</h1>
           <div className="contentn">
-            <a href="https://unsplash.com/photos/HkTMcmlMOUQ" target="_blank">
+            {/* <a href="https://unsplash.com/photos/HkTMcmlMOUQ" target="_blank"> */}
               <div className="contentn-overlay"></div>
               <img className="contentn-image" src="/Asset/card2.jpg" />
               <div className="contentn-details fadeIn-top">
@@ -34,14 +34,14 @@ export default function CardsGroup() {
                   neatly. and refines from Recycling
                 </p>
               </div>
-            </a>
+            {/* </a> */}
           </div>
         </div>
 
         <div className="containern">
           <h1 style={{ textAlign: "center", fontWeight: '500', fontSize: '2rem', margin: '.5em auto' }}>Waste Assissing</h1>
           <div className="contentn">
-            <a href="https://unsplash.com/photos/HkTMcmlMOUQ" target="_blank">
+            {/* <a href="https://unsplash.com/photos/HkTMcmlMOUQ" target="_blank"> */}
               <div className="contentn-overlay"></div>
               <img className="contentn-image" src="/Asset/card3.jpg" />
               <div className="contentn-details fadeIn-top">
@@ -51,7 +51,7 @@ export default function CardsGroup() {
                   thought into new and refines form Recycling
                 </p>
               </div>
-            </a>
+            {/* </a> */}
           </div>
         </div>
       </div>
