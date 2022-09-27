@@ -6,6 +6,7 @@ import User from "./User";
 
 const Dashboard = () => {
   const [role, setRole] = useState("");
+  const [id, setId] = useState("");
   const navigate = useNavigate();
   useEffect(() => {
     fetch("http://localhost:1337/isAuthenticated", {
@@ -16,6 +17,7 @@ const Dashboard = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.isLoggedIn) {
+          setId(data.id);
           setRole(data.role);
           navigate("/dashboard");
         } else {
@@ -25,7 +27,7 @@ const Dashboard = () => {
   }, []);
 
   const renderDash = () => {
-    if (role === "citizen") return <User />;
+    if (role === "citizen") return <User userId={id} />;
     else if (role === "collector") return <Collector />;
   };
 
