@@ -8,7 +8,7 @@ exports.pickupRequestPOST = async (req, res) => {
   const dbPickup = new Pickup({
     userId: pickupData.id,
     longitude: pickupData.lng,
-    latitude: pickupData.lat,k
+    latitude: pickupData.lat,
     type: pickupData.type,
     quantity: pickupData.quantity,
     avatar: pickupData.imageurl,
@@ -20,3 +20,12 @@ exports.pickupRequestPOST = async (req, res) => {
     res.json({ message: "Success", status: "ok" });
   });
 };
+
+
+exports.getDestinations = async (req, res) => {
+  const date = new Date()
+  // console.log(date);
+  const dbData = await Pickup.find({Date: '2022-09-29'})
+  // console.log(dbData);
+  res.json({status: 'ok', data: dbData})
+}

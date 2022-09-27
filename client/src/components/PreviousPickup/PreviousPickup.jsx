@@ -1,5 +1,6 @@
 import React from "react";
 import AlignItemsList from "./wastecomponent";
+import './pickup.css'
 
 const PreviousPickup = () => {
   return (

@@ -19,6 +19,7 @@ app.post("/register-user", register.registerUserPOST);
 app.post("/register-collector", register.registerCollectorPOST);
 app.post("/login-user", login.loginUser);
 app.post("/request-pickup", pickup.pickupRequestPOST);
+app.get("/get-destinations", pickup.getDestinations);
 app.get("/isAuthenticated", JWT.verifyJWT, (req, res) => {
   return res.json({
     isLoggedIn: true,

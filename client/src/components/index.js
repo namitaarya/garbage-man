@@ -3,4 +3,5 @@ export {default as TestimonialCard} from "./TestimonialCard/TestimonialCard"
 export {default as Footer} from "./Footer/Footer"
 export {default as Partners} from "./Partners/Partners"
 export {default as RequestPickup} from './RequestPickup/RequestPickup'
+export {default as Scheduled} from './Scheduled/Scheduled'
 export {default as PreviousPickup} from './PreviousPickup/PreviousPickup'

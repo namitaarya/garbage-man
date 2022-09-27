@@ -1,14 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
+import { PreviousPickup, Scheduled } from "../../components";
 
 const Collector = () => {
+  const [currTab, setCurrTab] = useState("Scheduled Pickup");
+
+  const changeTab = () => {
+    if (currTab === "Scheduled Pickup") return <Scheduled />;
+    if (currTab === "Previous Pickup") return <PreviousPickup />;
+  };
   return (
     <div className="collector">
-      Collector Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vitae
-      illo ratione dignissimos aspernatur nobis dolorem esse, itaque aperiam.
-      Laborum dolores omnis quaerat assumenda maxime! Ipsam temporibus
-      distinctio ex magnam impedit ipsum nam eum quibusdam quo porro, ipsa,
-      vero, eaque veritatis voluptatem obcaecati veniam excepturi maiores
-      maxime. Ipsa qui repellat veniam.
+      <div className="btn_container">
+        <div
+          className="btn"
+          onClick={() => {
+            setCurrTab("Scheduled Pickup");
+          }}
+        >
+          Scheduled Pickup
+        </div>
+        <div
+          className="btn"
+          onClick={() => {
+            setCurrTab("Previous Pickup");
+          }}
+        >
+          Previous Pickups
+        </div>
+      </div>
+
+      {changeTab()}
     </div>
   );
 };

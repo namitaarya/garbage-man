@@ -32,8 +32,8 @@ const NavBar = () => {
       .then((res) => res.json())
       .then((data) =>
         data.isLoggedIn
-          ? setIsLoggedIn(data.isLoggedIn)
-          : ''
+          ? setIsLoggedIn(true)
+          : setIsLoggedIn(false)
       );
   }, []);
 
