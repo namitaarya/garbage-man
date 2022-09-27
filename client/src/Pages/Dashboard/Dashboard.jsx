@@ -1,0 +1,40 @@
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Collector from "./Collector";
+import "./dash.css";
+import User from "./User";
+
+const Dashboard = () => {
+  const [role, setRole] = useState("");
+  const navigate = useNavigate();
+  useEffect(() => {
+    fetch("http://localhost:1337/isAuthenticated", {
+      headers: {
+        "x-access-token": localStorage.getItem("token"),
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.isLoggedIn) {
+          setRole(data.role);
+          navigate("/dashboard");
+        } else {
+          navigate("/login-user");
+        }
+      });
+  }, []);
+
+  const renderDash = () => {
+    if (role == "citizen") return <User />;
+    else if (role == "collector") return <Collector />;
+  };
+
+  return (
+    <div className="dashboard">
+      <h1 className="head">Dashboard</h1>
+      {renderDash()}
+    </div>
+  );
+};
+
+export default Dashboard;

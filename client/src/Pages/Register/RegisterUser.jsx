@@ -25,7 +25,12 @@ const RegisterUser = () => {
     setRecords([...records, newRecord]);
     setUserData({ name: "", email: "", contact: "", password: "" });
 
-    const response = await fetch("http://localhost:1337/register-user", {
+    const apiCall =
+      role === "CITIZEN"
+        ? "http://localhost:1337/register-user"
+        : "http://localhost:1337/register-collector";
+        
+    const response = await fetch(apiCall, {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -86,6 +91,21 @@ const RegisterUser = () => {
                 onChange={handleInput}
                 placeholder="Enter Password"
               />
+            </div>
+
+            <div className="form_group">
+              <select
+                name="role"
+                id=""
+                value={role}
+                onChange={(e) => {
+                  setRole(e.target.value);
+                  console.log(role);
+                }}
+              >
+                <option value="CITIZEN">Citizen</option>
+                <option value="COLLECTOR">Collector</option>
+              </select>
             </div>
 
             <button type="submit" className="submit_btn">

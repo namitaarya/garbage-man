@@ -1,5 +1,5 @@
 import "./App.css";
-import { Home, AboutUs, RegisterUser, LoginUser} from "./Pages";
+import { Home, AboutUs, RegisterUser, LoginUser, Dashboard } from "./Pages";
 import { NavBar } from "./components";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Footer } from "./components"
@@ -19,6 +19,7 @@ function App() {
             <Route path="aboutus" element={<AboutUs />}></Route>
             <Route path="register-user" element={<RegisterUser />} />
             <Route path="login-user" element={<LoginUser />} />
+            <Route path="dashboard" element={<Dashboard />} />
             <Route path="contact-us" element={<ContactUs />}/>
           </Route>
         </Routes>

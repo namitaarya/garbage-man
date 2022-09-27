@@ -128,3 +128,15 @@
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {background-color: var(--sap-green);}
+
+.logout button{
+  background: none;
+  font-family: var(--font-body);
+  border: none;
+  font-size: 1rem;
+  color: var(--black);
+}
+
+.logout button:hover {
+  color: #fff;
+}
