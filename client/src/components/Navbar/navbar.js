@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import React, { useEffect, useState } from "react";
-=======
-import React, { useState, useEffect } from "react";
->>>>>>> 3396121953ec6263133e2e554ba9c8ee6154f395
 import "./navbar.scss";
 // import Logo from 'D:/garbage-man/client/src/assets/logo.png'
 
@@ -19,13 +15,10 @@ const NavBar = () => {
     }
   };
 
-<<<<<<< HEAD
   const logout = () => {
     localStorage.removeItem("token");
     window.location.href = "/";
   };
-=======
->>>>>>> 3396121953ec6263133e2e554ba9c8ee6154f395
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
   });
