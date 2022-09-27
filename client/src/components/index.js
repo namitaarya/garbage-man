@@ -5,3 +5,4 @@ export {default as Partners} from "./Partners/Partners"
 export {default as RequestPickup} from './RequestPickup/RequestPickup'
 export {default as Scheduled} from './Scheduled/Scheduled'
 export {default as PreviousPickup} from './PreviousPickup/PreviousPickup'
+export {default as ScheduledPickup} from './ScheduledPickUp/ScheduledPickUp'

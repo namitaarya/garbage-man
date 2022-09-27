@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { PreviousPickup, RequestPickup } from "../../components";
+import { ScheduledPickup } from "../../components";
 
 const User = ({userId}) => {
   const [currTab, setCurrTab] = useState("Request Pickup");
@@ -9,8 +10,11 @@ const User = ({userId}) => {
         return <RequestPickup userId={userId} />;
       case "Previous Pickup":
         return <PreviousPickup />;
+      case "Scheduled Pickup":
+        return <ScheduledPickup />;
     }
   };
+
   return (
     <div className="user-dashboard">
       <div className="btn_container">
@@ -29,6 +33,15 @@ const User = ({userId}) => {
           }}
         >
           Previous Pickups
+        </div>
+
+        <div
+          className="btn"
+          onClick={() => {
+            setCurrTab("Scheduled Pickup");
+          }}
+        >
+          Scheduled Pickups
         </div>
       </div>
       {changeTab(currTab)}
