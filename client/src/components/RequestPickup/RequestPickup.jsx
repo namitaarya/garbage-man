@@ -72,7 +72,6 @@ const RequestPickup = () => {
         const lnglat = marker.getLngLat();
         setLongitude(lnglat.lng);
         setLatitude(lnglat.lat);
-        console.log(lnglat, longitude, latitude);
       });
 
       marker.setPopup(popup).togglePopup();
@@ -101,8 +100,6 @@ const RequestPickup = () => {
         lat: "",
       },
     });
-
-    
   };
   return (
     <div className="register__form">

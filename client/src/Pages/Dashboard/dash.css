@@ -18,6 +18,7 @@
   margin: 5em auto;
   background: var(--bg-grey);
   border-radius: 1em;
+  padding: 2em 0 6em;
 }
 
 .dashboard .head {

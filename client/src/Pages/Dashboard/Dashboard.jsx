@@ -25,8 +25,8 @@ const Dashboard = () => {
   }, []);
 
   const renderDash = () => {
-    if (role == "citizen") return <User />;
-    else if (role == "collector") return <Collector />;
+    if (role === "citizen") return <User />;
+    else if (role === "collector") return <Collector />;
   };
 
   return (
