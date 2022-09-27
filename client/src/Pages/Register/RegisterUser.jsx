@@ -40,7 +40,6 @@ const RegisterUser = () => {
     });
 
     const data = await response.json();
-    console.log(data);
     if (data.status === "ok") {
       window.location.href = "/login-user";
     }

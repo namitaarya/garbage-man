@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { PreviousPickup, RequestPickup } from "../../components";
 import { ScheduledPickup } from "../../components";
 
-const User = () => {
+const User = ({userId}) => {
   const [currTab, setCurrTab] = useState("Request Pickup");
   const changeTab = (option) => {
     switch (option) {
       case "Request Pickup":
-        return <RequestPickup />;
+        return <RequestPickup userId={userId} />;
       case "Previous Pickup":
         return <PreviousPickup />;
       case "Scheduled Pickup":

@@ -3,33 +3,23 @@ import "@tomtom-international/web-sdk-maps/dist/maps.css";
 import * as tt from "@tomtom-international/web-sdk-maps";
 import { useNavigate } from "react-router-dom";
 
-const RequestPickup = () => {
-  useEffect(() => {
-    fetch("http://localhost:1337/isAuthenticated", {
-      headers: {
-        "x-access-token": localStorage.getItem("token"),
-      },
-    })
-      .then((res) => res.json())
-      .then((data) =>
-        data.isLoggedIn ? navigate("/dashboard") : navigate("/login-user")
-      );
-  }, []);
-
+const RequestPickup = ({userId}) => {
   const [type, setType] = useState("domestic-waste");
-
   const [pickupData, setPickupData] = useState({
-    type: "",
     imageurl: "",
     quantity: "",
+    type: "",
+    dateTime: "",
     lng: "",
     lat: "",
+    id: userId
   });
   const [longitude, setLongitude] = useState("");
   const [latitude, setLatitude] = useState("");
   const navigate = useNavigate();
   const [map, setMap] = useState({});
-  const [records, setRecords] = useState("");
+  const [dateTime, setDateTime] = useState("");
+  const [id, setId] = useState('')
 
   const mapElement = useRef();
 
@@ -73,7 +63,6 @@ const RequestPickup = () => {
         const lnglat = marker.getLngLat();
         setLongitude(lnglat.lng);
         setLatitude(lnglat.lat);
-        console.log(lnglat, longitude, latitude);
       });
 
       marker.setPopup(popup).togglePopup();
@@ -90,24 +79,34 @@ const RequestPickup = () => {
     setPickupData({ ...pickupData, [name]: value });
   };
 
-  // const handleInputUrl = (event) => {
-  //   const str = event.target.value;
-  //   // const img_tag = str.substring(str.indexOf("/d/") + 3, str.lastIndexOf("/view"));
-  //   // console.log(img_tag)
-  //   setPickupData({imageurl: str})
-  // }
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const newRecord = { ...pickupData };
-    setRecords([...records, newRecord]);
+    console.log(pickupData);
+
     setPickupData({
-      type: "",
       quantity: 0,
       lng: "",
+      dateTime: "",
+      imageurl: "",
+      type: "",
       lat: "",
+      id: userId
     });
-    console.log(pickupData);
+
+    const response = await fetch("http://localhost:1337/request-pickup", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(pickupData),
+    });
+
+    const data = await response.json();
+
+    if (data.status === "ok") {
+      alert('Pickup scheduled')
+      navigate("/dashboard");
+    }
   };
   return (
     <div className="register__form">
@@ -119,18 +118,22 @@ const RequestPickup = () => {
             reprehenderit ea ad dolores fugiat tempora?
           </p>
           <form action="" className="register__form" onSubmit={handleSubmit}>
-          
-          <div className="form_group">
-              <select               
+            <div className="form_group">
+              <select
                 name="type"
                 id=""
                 value={type}
                 onChange={(e) => {
-                  setType(e.target.value);
-                  setPickupData({...pickupData, type: type, lng: longitude, lat: latitude})
-                  console.log(type);
-                }}>
-                <option>Domestic Waste</option>
+                  setPickupData({
+                    ...pickupData,
+                    lat: latitude,
+                    lng: longitude,
+                    type: e.target.value,
+
+                  });
+                }}
+              >
+                <option value="domestic-waste">Domestic Waste</option>
                 <option value="industry-waste">Industry Waste</option>
                 <option value="food-waste">Food Waste</option>
                 <option value="chemical-waste">Chemical Waste</option>
@@ -155,6 +158,20 @@ const RequestPickup = () => {
                 value={pickupData.quantity}
                 onChange={handleInput}
                 placeholder="Enter Quantity of Waste"
+                id=""
+              />
+            </div>
+
+            <div className="form_group">
+              <input
+                type="datetime-local"
+                value={pickupData.dateTime.toString().substring(0, 16)}
+                onChange={(e) => {
+                  if (!e.target["validity"].valid) return;
+                  const dt = e.target["value"];
+                  setPickupData({ ...pickupData, dateTime: dt });
+                  console.log(dt);
+                }}
                 id=""
               />
             </div>
