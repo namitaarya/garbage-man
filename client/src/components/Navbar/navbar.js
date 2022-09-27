@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./navbar.scss";
 // import Logo from 'D:/garbage-man/client/src/assets/logo.png'
+import {CgLogIn, CgLogOut} from "react-icons/cg"
 
 const NavBar = () => {
   const [scrolled, setScrolled] = React.useState(false);
@@ -67,12 +68,12 @@ const NavBar = () => {
         </nav>
 
           {isLoggedIn ? (
-            <li className="logout">
-              <button onClick={logout}>Logout</button>
+            <li className="logout" style={{listStyleType: "none"}}>
+              <button onClick={logout} style={{display: "flex"}}><CgLogOut size = {25} /> Logout</button>
             </li>
           ) : (
             <div class="dropdown">
-              <button class="dropbtn">SignIn/SignUp</button>
+              <button class="dropbtn" style={{display: "flex"}}><CgLogIn size = {25} /> SignIn / SignUp</button>
               <div class="dropdown-content">
                 <a href="/login-user">Sign In</a>
                 <a href="/register-user">Sign Up</a>
