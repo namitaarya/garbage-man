@@ -17,7 +17,6 @@ const JWT = require("./middleware/verifyJWT");
 app.post("/register-user", register.registerUserPOST);
 app.post("/login-user", login.loginUser);
 app.get("/isAuthenticated", JWT.verifyJWT, (req, res) => {
-  console.log("hey");
   return res.json({ isLoggedIn: true, username: req.user.name });
 });
 

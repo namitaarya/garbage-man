@@ -1,7 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { PreviousPickup, RequestPickup } from "../../components";
+
+import "./dash.css";
 
 const Dashboard = () => {
+  const [currTab, setCurrTab] = useState('Request Pickup')
   const navigate = useNavigate();
   useEffect(() => {
     fetch("http://localhost:1337/isAuthenticated", {
@@ -15,14 +19,24 @@ const Dashboard = () => {
       );
   }, []);
 
-  const logout = () => {
-    localStorage.removeItem("token");
-    navigate('/')
-  };
+  const changeTab = (option) => {
+    switch (option) {
+      case 'Request Pickup': return <RequestPickup />
+      case 'Previous Pickup': return <PreviousPickup />
+    }
+  }
+
   return (
     <div className="dashboard">
-      <h1>User Dashboard</h1>
-      <button onClick={logout}>logout</button>
+      <h1 className="head">User Dashboard</h1>
+      <div className="btn_container">
+        <div className="btn" onClick={() => {setCurrTab('Request Pickup')}}>Request Pickup</div>
+        <div className="btn" onClick={() => {setCurrTab('Previous Pickup')}}>Previous Pickups</div>
+      </div>
+      {
+        changeTab(currTab)
+      }
+      {/* <RequestPickup /> */}
     </div>
   );
 };
