@@ -64,12 +64,19 @@ const NavBar = () => {
           <li>
             <a href="/contact-us">Contact Us</a>
           </li>
+          {isLoggedIn ? (
+            <li>
+              <a href="/dashboard">Dashboard</a>
+            </li>
+          ) : (
+            <></>
+          )}
           </ul>
         </nav>
 
           {isLoggedIn ? (
             <li className="logout" style={{listStyleType: "none"}}>
-              <button onClick={logout} style={{display: "flex"}}><CgLogOut size = {25} /> Logout</button>
+              <a onClick={logout} style={{display: "flex", cursor:"pointer"}}><CgLogOut size = {25} /> Logout</a>
             </li>
           ) : (
             <div class="dropdown">
