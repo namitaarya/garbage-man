@@ -36,4 +36,5 @@
 - To view SCHEDULED pickups
 ![image](https://user-images.githubusercontent.com/25116462/192701124-654c8a75-62fd-4cd3-8c47-be78b5734df6.png)
 - Login as a Garbage collector and get the Optimal Route on collector's side
-<image>
+![image](https://user-images.githubusercontent.com/25116462/192702135-73276a2b-3632-4443-926d-5f1f86986a79.png)
+
