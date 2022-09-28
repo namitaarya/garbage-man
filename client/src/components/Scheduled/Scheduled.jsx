@@ -2,44 +2,13 @@ import React, { useEffect, useRef, useState } from "react";
 import "@tomtom-international/web-sdk-maps/dist/maps.css";
 import * as tt from "@tomtom-international/web-sdk-maps";
 import * as ttapi from "@tomtom-international/web-sdk-services";
+import "./style.css";
 
 const Scheduled = () => {
   const mapElement = useRef();
   const [longitude, setLongitude] = useState(77.1370002);
   const [latitude, setLatitude] = useState(28.7188327);
   const [map, setMap] = useState({});
-  let destinations = [];
-
-  const setGeoLocation = () => {
-    if (navigator) {
-      navigator.geolocation.getCurrentPosition((pos) => {
-        setLatitude(pos.coords.latitude);
-        setLongitude(pos.coords.longitude);
-      });
-    }
-  };
-
-  setGeoLocation();
-
-  const getDestinations = async () => {
-    const response = await fetch("http://localhost:1337/get-destinations");
-    const data = await response.json();
-    if (data.status === "ok") {
-      // console.log(data.data);
-      data.data.map((item, i) => {
-        const obj = {
-          lng: item.longitude,
-          lat: item.latitude,
-        };
-        destinations.push(obj);
-        // console.log('obj', i, ': ',obj);
-      });
-    }
-
-    // console.log(destinations);
-  };
-
-  getDestinations();
 
   const convertToPoints = (lngLat) => {
     return {
@@ -50,22 +19,54 @@ const Scheduled = () => {
     };
   };
 
+  const setGeoLocation = () => {
+    if (navigator) {
+      navigator.geolocation.getCurrentPosition((pos) => {
+        setLatitude(pos.coords.latitude);
+        setLongitude(pos.coords.longitude);
+      });
+    }
+  };
+  setGeoLocation();
+
+  const drawRoutes = (geoJson, map) => {
+    if (map.getLayer("route")) {
+      map.removeLayer("route");
+      map.removeSource("route");
+    }
+    map.addLayer({
+      id: "route",
+      type: "line",
+      source: {
+        type: "geojson",
+        data: geoJson,
+      },
+      paint: {
+        "line-color": "#4a90e2",
+        "line-width": 6,
+      },
+    });
+  };
+
   const addPickupMarker = (lngLat, map) => {
-    const element = document.createElement('div')
-    element.className = 'marker-delivery'
+    const element = document.createElement("div");
+    element.className = "marker-delivery";
 
     new tt.Marker({
-        element: element
+      element: element,
     })
-    .setPopup(lngLat)
-    .addTo(map)
-  }
+      .setLngLat(lngLat)
+      .addTo(map);
+  };
+
   useEffect(() => {
     const origin = {
       lng: longitude,
       lat: latitude,
     };
-    console.log(longitude, latitude);
+    const destinations = [];
+
+    // console.log(longitude, latitude);
     let map = tt.map({
       key: process.env.REACT_APP_TOMTOM_API_KEY,
       container: mapElement.current,
@@ -76,7 +77,6 @@ const Scheduled = () => {
       center: [longitude, latitude],
       zoom: 14,
     });
-
     setMap(map);
 
     const addMarker = () => {
@@ -103,27 +103,78 @@ const Scheduled = () => {
 
       marker.setPopup(popup).togglePopup();
     };
-
     addMarker();
 
-    // const destinationPoints =
-    // const callParameters = {
-    //     key: process.env.REACT_APP_TOMTOM_API_KEY,
-    //     destination: destinationPoints,
-    //     origin: [convertToPoints(origin)]
-    // }
+    const sortDestinations = (locations) => {
+      const pointsForDestinations = locations.map((destination) => {
+        return convertToPoints(destination);
+      });
+      const callParameters = {
+        key: process.env.REACT_APP_TOMTOM_API_KEY,
+        destinations: pointsForDestinations,
+        origins: [convertToPoints(origin)],
+      };
 
-    // return new Promise((resolve, reject) => {
-    //     ttapi.services
-    //     .matrixRouting(callParameters)
-    // })
+      return new Promise((resolve, reject) => {
+        ttapi.services
+          .matrixRouting(callParameters)
+          .then((matrixAPIResults) => {
+            const results = matrixAPIResults.matrix[0];
+            const resultsArray = results.map((result, index) => {
+              return {
+                location: locations[index],
+                drivingtime: result.response.routeSummary.travelTimeInSeconds,
+              };
+            });
+            resultsArray.sort((a, b) => {
+              return a.drivingtime - b.drivingtime;
+            });
+            const sortedLocations = resultsArray.map((result) => {
+              return result.location;
+            });
+            resolve(sortedLocations);
+          });
+      });
+    };
 
-    if(destinations.length) {
-        destinations.forEach((item) => console.log(item))
-    }
+    const recalculateRoutes = () => {
+      sortDestinations(destinations).then((sorted) => {
+        sorted.unshift(origin);
+
+        ttapi.services
+          .calculateRoute({
+            key: process.env.REACT_APP_TOMTOM_API_KEY,
+            locations: sorted,
+          })
+          .then((routeData) => {
+            const geoJson = routeData.toGeoJson();
+            drawRoutes(geoJson, map);
+          });
+      });
+    };
+
+    const getDestinations = async () => {
+      const response = await fetch("http://localhost:1337/get-destinations");
+      const data = await response.json();
+      if (data.status === "ok") {
+        data.data.map((item, i) => {
+          const obj = {
+            lng: item.longitude,
+            lat: item.latitude,
+          };
+          destinations.push(obj);
+        });
+        destinations.forEach((lnglat) => {
+          addPickupMarker(lnglat, map);
+          recalculateRoutes();
+        });
+      }
+    };
+    getDestinations();
 
     return () => map.remove();
   }, [longitude, latitude]);
+
   return (
     <div className="scheduled register__form">
       <div className="form__wrapper">
@@ -136,7 +187,7 @@ const Scheduled = () => {
         </div>
 
         <div className="right">
-          <div className="map" ref={mapElement}></div>
+          {map && <div className="map" ref={mapElement}></div>}
         </div>
       </div>
     </div>
