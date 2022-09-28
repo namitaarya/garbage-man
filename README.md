@@ -23,6 +23,16 @@
 ```nodemon server.js```
 
 ## Current features :  
+- Landing page, About Us and Contact Us
+![image](https://user-images.githubusercontent.com/25116462/192702295-45ee8e7d-936f-47d7-8e07-e75972fd6b4c.png)
+![image](https://user-images.githubusercontent.com/25116462/192702321-63165faa-29c9-4edd-90bf-1a2c1eee6f4c.png)
+![image](https://user-images.githubusercontent.com/25116462/192702357-e1e6ec0e-486e-426d-9dc5-7c8029f92cdc.png)
+![image](https://user-images.githubusercontent.com/25116462/192702394-b1781b5c-f8ec-482c-94b1-7b6f5fc6081d.png)
+![image](https://user-images.githubusercontent.com/25116462/192702423-8b35d470-a920-4557-87da-03f199fdab86.png)
+![image](https://user-images.githubusercontent.com/25116462/192702450-ac144b4a-37e4-405c-a79e-14af32003107.png)
+![image](https://user-images.githubusercontent.com/25116462/192702504-ba81e55b-7c2c-4f1e-9e9e-0c0aaef76bf7.png)
+![image](https://user-images.githubusercontent.com/25116462/192702546-75d5fee6-f317-4a1c-979c-0fa1476ccb9a.png)
+
 - Register as citizen or garbage collector
 ![image](https://user-images.githubusercontent.com/25116462/192700805-5ccb12ee-b191-4e7f-9e8f-80b407cfbad6.png)
 - Login after registeration
