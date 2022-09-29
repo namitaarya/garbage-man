@@ -22,25 +22,27 @@ exports.pickupRequestPOST = async (req, res) => {
   });
 };
 
+const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
+
 exports.getDestinations = async (req, res) => {
   const date = new Date();
   const dbData = await Pickup.find({ Date: "2022-09-29" });
-  // const id = dbData.userId
-  // console.log(dbData);
-  var userData = [];
-  dbData.map((user) => {
-    User.findById(user.userId, (err, data) => {
-      if (err) console.log(err);
-      else {
-        const userObj = {
-          name: data.name,
-          type: user.type,
-          quantity: user.quantity,
-        };
-        userData.push(userObj);
-      }
-    });
-  });
-  // console.log(userData);
-  res.json({ status: "ok", data: dbData, userData: userData });
+
+  // const userData = [];
+  const result = await Promise.all(dbData.map(async(user) => {
+    await delay(10);
+    const u = await User.findById(user.userId);
+    // console.log(u);
+    const userObj = {
+      name: u.name,
+      type: user.type,
+      quantity: user.quantity
+    }
+    return userObj;
+    // userData.push(userObj)
+  }))
+  
+  console.log(result);
+
+  res.json({ status: "ok", data: dbData, userData: result });
 };

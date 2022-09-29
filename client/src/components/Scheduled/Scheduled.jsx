@@ -9,7 +9,7 @@ const Scheduled = () => {
   const [longitude, setLongitude] = useState(77.1370002);
   const [latitude, setLatitude] = useState(28.7188327);
   const [map, setMap] = useState({});
-  const [pickupData, setPickupData] = useState([])
+  const [pickupData, setPickupData] = useState([]);
 
   const convertToPoints = (lngLat) => {
     return {
@@ -158,8 +158,8 @@ const Scheduled = () => {
       const response = await fetch("http://localhost:1337/get-destinations");
       const data = await response.json();
       if (data.status === "ok") {
-        // setPickupData(data.userData)
-        // console.log(data.userData);
+        setPickupData(data.userData);
+        console.log("pickup data-> ", pickupData);
         data.data.map((item, i) => {
           const obj = {
             lng: item.longitude,
@@ -188,16 +188,30 @@ const Scheduled = () => {
             reprehenderit ea ad dolores fugiat tempora?
           </p>
 
-          {/* <table>
-            <thead>
-              <tr>
-                <th>Pickup No.</th>
-                <th>Citizen Name</th>
-                <th>Garbage Quantity</th>
-                <th>Garbage Category</th>
-              </tr>
-            </thead>
-          </table> */}
+          {pickupData && (
+            <table>
+              <thead>
+                <tr>
+                  <th>Pickup No.</th>
+                  <th>Citizen Name</th>
+                  <th>Garbage Quantity</th>
+                  <th>Garbage Category</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  pickupData.map((item, i) => (
+                    <tr>
+                      <td>{i + 1}.</td>
+                      <td>{item.name}</td>
+                      <td>{item.quantity}</td>
+                      <td>{item.type}</td>
+                    </tr>
+                  ))
+                }
+              </tbody>
+            </table>
+          )}
         </div>
 
         <div className="right">
