@@ -30,12 +30,10 @@ app.get("/api/isAuthenticated", JWT.verifyJWT, (req, res) => {
 });
 app.get("/api/prev-pickup/:userId", pickup.userPrevPickupGET);
 
-if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging') {
-  app.use(express.static('client/build'));
-  app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname + '/client/build/index.html'));
-  });
- }
+
+if(process.env.NODE_ENV == 'production') {
+  app.use(express.static("client/build"));
+}
 
 app.listen(PORT, () => {
   console.log(`Server started on port: ${PORT}`);
