@@ -15,12 +15,12 @@ const login = require("./routes/login");
 const pickup = require("./routes/pickup");
 const JWT = require("./middleware/verifyJWT");
 
-app.post("/register-user", register.registerUserPOST);
-app.post("/register-collector", register.registerCollectorPOST);
-app.post("/login-user", login.loginUser);
-app.post("/request-pickup", pickup.pickupRequestPOST);
-app.get("/get-destinations", pickup.getDestinations);
-app.get("/isAuthenticated", JWT.verifyJWT, (req, res) => {
+app.post("/api/register-user", register.registerUserPOST);
+app.post("/api/register-collector", register.registerCollectorPOST);
+app.post("/api/login-user", login.loginUser);
+app.post("/api/request-pickup", pickup.pickupRequestPOST);
+app.get("/api/get-destinations", pickup.getDestinations);
+app.get("/api/isAuthenticated", JWT.verifyJWT, (req, res) => {
   return res.json({
     isLoggedIn: true,
     username: req.user.name,
@@ -28,7 +28,14 @@ app.get("/isAuthenticated", JWT.verifyJWT, (req, res) => {
     id: req.user.id,
   });
 });
-app.get("/prev-pickup", pickup.userPrevPickupGET);
+app.get("/api/prev-pickup/:userId", pickup.userPrevPickupGET);
+
+if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging') {
+  app.use(express.static('client/build'));
+  app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/client/build/index.html'));
+  });
+ }
 
 app.listen(PORT, () => {
   console.log(`Server started on port: ${PORT}`);

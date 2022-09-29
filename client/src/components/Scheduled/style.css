@@ -1,17 +1,9 @@
 .marker-delivery {
-  /* background-color: red; */
   border-radius: 50%;
   border: 8px solid rgb(217, 47, 47);
   width: 8px;
   height: 8px;
   position: relative;
-  /* position: absolute;
-    top: 40%;
-    left: 50%;
-    margin-left: 115px;
-    
-    border-radius: 50%;
-    border: 8px solid #fff; */
 }
 
 .marker-delivery::after {

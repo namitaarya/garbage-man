@@ -28,8 +28,8 @@ const RegisterUser = () => {
 
     const apiCall =
       role === "CITIZEN"
-        ? "http://localhost:1337/register-user"
-        : "http://localhost:1337/register-collector";
+        ? "/api/register-user"
+        : "/api/register-collector";
         
     const response = await fetch(apiCall, {
       method: "POST",
