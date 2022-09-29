@@ -189,28 +189,44 @@ const Scheduled = () => {
           </p>
 
           {pickupData && (
-            <table>
-              <thead>
-                <tr>
-                  <th>Pickup No.</th>
-                  <th>Citizen Name</th>
-                  <th>Garbage Quantity</th>
-                  <th>Garbage Category</th>
-                </tr>
-              </thead>
-              <tbody>
-                {
-                  pickupData.map((item, i) => (
-                    <tr>
-                      <td>{i + 1}.</td>
-                      <td>{item.name}</td>
-                      <td>{item.quantity}</td>
-                      <td>{item.type}</td>
-                    </tr>
-                  ))
-                }
-              </tbody>
-            </table>
+            // <table className="pickup-table">
+            //   <thead>
+            //     <tr>
+            //       <th>S. No.</th>
+            //       <th>Citizen Name</th>
+            //       <th>Garbage Quantity</th>
+            //       <th>Garbage Category</th>
+            //     </tr>
+            //   </thead>
+            //   <tbody>
+            //     {
+            //       pickupData.map((item, i) => (
+            //         <tr>
+            //           <td>{i + 1}.</td>
+            //           <td>{item.name}</td>
+            //           <td>{item.quantity}</td>
+            //           <td>{item.type}</td>
+            //         </tr>
+            //       ))
+            //     }
+            //   </tbody>
+            // </table>
+            <div className="table">
+              <div className="table-row" style={{fontWeight: 'bold'}}>
+                <div className="table-cell">S. No.</div>
+                <div className="table-cell">Citizen Name</div>
+                <div className="table-cell">Quantity</div>
+                <div className="table-cell">Category</div>
+              </div>
+              {pickupData.map((item, idx) => (
+                <div className="table-row" key={idx}>
+                  <div className="table-cell">{idx + 1}</div>
+                  <div className="table-cell">{item.name}</div>
+                  <div className="table-cell">{item.quantity}</div>
+                  <div className="table-cell">{item.type}</div>
+                </div>
+              ))}
+            </div>
           )}
         </div>
 
