@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./navbar.scss";
 // import Logo from 'D:/garbage-man/client/src/assets/logo.png'
-import {CgLogIn, CgLogOut} from "react-icons/cg"
+import { CgLogIn, CgLogOut } from "react-icons/cg";
 
 const NavBar = () => {
   const [scrolled, setScrolled] = React.useState(false);
@@ -31,11 +31,9 @@ const NavBar = () => {
       },
     })
       .then((res) => res.json())
-      .then((data) =>
-        data.isLoggedIn
-          ? setIsLoggedIn(true)
-          : setIsLoggedIn(false)
-      );
+      .then((data) => setIsLoggedIn(data.isLoggedIn));
+
+    console.log(isLoggedIn);
   }, []);
 
   let x = ["navbar"];
@@ -64,22 +62,26 @@ const NavBar = () => {
           <li>
             <a href="/contact-us">Contact Us</a>
           </li>
-          </ul>
-        </nav>
+        </ul>
+      </nav>
 
-          {isLoggedIn ? (
-            <li className="logout" style={{listStyleType: "none"}}>
-              <button onClick={logout} style={{display: "flex"}}><CgLogOut size = {25} /> Logout</button>
-            </li>
-          ) : (
-            <div class="dropdown">
-              <button class="dropbtn" style={{display: "flex"}}><CgLogIn size = {25} /> SignIn / SignUp</button>
-              <div class="dropdown-content">
-                <a href="/login-user">Sign In</a>
-                <a href="/register-user">Sign Up</a>
-              </div>
-            </div>
-          )}
+      {isLoggedIn ? (
+        <li className="logout" style={{ listStyleType: "none" }}>
+          <button onClick={logout} style={{ display: "flex" }}>
+            <CgLogOut size={25} /> Logout
+          </button>
+        </li>
+      ) : (
+        <div class="dropdown">
+          <button class="dropbtn" style={{ display: "flex" }}>
+            <CgLogIn size={25} /> SignIn / SignUp
+          </button>
+          <div class="dropdown-content">
+            <a href="/login-user">Sign In</a>
+            <a href="/register-user">Sign Up</a>
+          </div>
+        </div>
+      )}
     </header>
   );
 };
