@@ -3,6 +3,33 @@
   margin: 1em;
 }
 
+.prev-pickup .pickup-item {
+  width: 70%;
+  margin: auto;
+  box-shadow: 0px 0px 10px 0px rgb(43 52 59 / 10%);
+  background-color: #fff;
+  border-radius: 2em;
+  margin-bottom: 2em;
+  padding: 2em;
+}
+
+.prev-pickup .pickup-item li {
+  gap: 2em;
+  justify-content: center;
+  align-items: center;
+}
+
+.prev-pickup .pickup-item .avatar {
+  width: 30%;
+}
+
+.prev-pickup .pickup-item .avatar img {
+  width: 100%;
+  height: 20vh;
+  object-fit: cover;
+  border-radius: 1.2em;
+}
+
 /* .prev-pickup table {
   width: 60%;
   margin: auto;

@@ -28,6 +28,7 @@ app.get("/isAuthenticated", JWT.verifyJWT, (req, res) => {
     id: req.user.id,
   });
 });
+app.get("/prev-pickup", pickup.userPrevPickupGET);
 
 app.listen(PORT, () => {
   console.log(`Server started on port: ${PORT}`);

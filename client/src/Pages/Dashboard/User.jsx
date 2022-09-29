@@ -9,9 +9,9 @@ const User = ({userId}) => {
       case "Request Pickup":
         return <RequestPickup userId={userId} />;
       case "Previous Pickup":
-        return <PreviousPickup />;
+        return <PreviousPickup userId={userId} />;
       case "Scheduled Pickup":
-        return <ScheduledPickup />;
+        return <ScheduledPickup userId={userId} />;
     }
   };
 

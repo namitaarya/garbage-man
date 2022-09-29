@@ -5,10 +5,9 @@ import Divider from '@mui/material/Divider';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
-import Typography from '@mui/material/Typography';
 
 
-export default function AlignItemsList() {
+export default function AlignItemsList({data}) {
     
 const DATA = [
     {
@@ -39,23 +38,22 @@ const DATA = [
 ]
 return <>
     {
-      DATA.map(item => <div>
-        
-      <ListItem alignItems="flex-start">
-        <ListItemAvatar>
-          <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+      data.map((item, i) => 
+      <div key={i} className="pickup-item">  
+      <ListItem >
+        <ListItemAvatar className='avatar'>
+          <img alt="Remy Sharp" src={`https://drive.google.com/uc?export=view&id=${item.avatar}`} />
         </ListItemAvatar>
         <ListItemText 
         style={{fontSize: "100px",}}
           secondary={
             <React.Fragment>
-              <h2>Type of waste: {item.type}</h2>
+              <h2 style={{color: 'var(--black)'}}>Type of waste: {item.type}</h2>
               <p>Quantity of waste: {item.quantity}</p>
-              <p>Time of pickup: {item.time}</p>
+              <p>Time of pickup: {item.Time}</p>
             </React.Fragment>
           }
         />
-        
       </ListItem>
       </div>)
     }
