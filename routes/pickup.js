@@ -44,7 +44,7 @@ exports.getDestinations = async (req, res) => {
 };
 
 exports.userPrevPickupGET = async (req, res) => {
-  const userId = req.originalUrl.split('userId=')[1];
+  const userId = req.params.userId
   const prevPick = await Pickup.find({userId: userId})
   res.json({ status: "ok", prev: prevPick });
 };
