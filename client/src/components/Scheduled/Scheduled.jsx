@@ -155,7 +155,7 @@ const Scheduled = () => {
     };
 
     const getDestinations = async () => {
-      const response = await fetch("http://localhost:1337/api/get-destinations");
+      const response = await fetch("/api/get-destinations");
       const data = await response.json();
       if (data.status === "ok") {
         setPickupData(data.userData);

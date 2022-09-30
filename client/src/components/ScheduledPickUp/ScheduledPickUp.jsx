@@ -7,7 +7,7 @@ const ScheduledPickUp = ({ userId }) => {
   useEffect(() => {
     const getPrevPickup = async () => {
       const response = await fetch(
-        `http://localhost:1337/api/prev-pickup/${userId}`,
+        `/api/prev-pickup/${userId}`,
         {
           method: "GET",
         }

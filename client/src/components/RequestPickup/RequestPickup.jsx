@@ -93,7 +93,7 @@ const RequestPickup = ({userId}) => {
       id: userId
     });
 
-    const response = await fetch("http://localhost:1337/api/request-pickup", {
+    const response = await fetch("/api/request-pickup", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
