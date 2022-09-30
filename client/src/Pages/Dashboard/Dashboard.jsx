@@ -9,7 +9,7 @@ const Dashboard = () => {
   const [id, setId] = useState("");
   const navigate = useNavigate();
   useEffect(() => {
-    fetch("/api/isAuthenticated", {
+    fetch("http://localhost:1337/api/isAuthenticated", {
       headers: {
         "x-access-token": localStorage.getItem("token"),
       },

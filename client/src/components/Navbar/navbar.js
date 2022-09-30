@@ -25,7 +25,7 @@ const NavBar = () => {
   });
 
   useEffect(() => {
-    fetch("/api/isAuthenticated", {
+    fetch("http://localhost:1337/api/isAuthenticated", {
       headers: {
         "x-access-token": localStorage.getItem("token"),
       },
