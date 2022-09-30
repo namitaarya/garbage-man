@@ -25,7 +25,8 @@ const LoginUser = () => {
     if (data.user) {
       localStorage.setItem("token", data.user);
       alert("Login Successful ");
-      navigate('/dashboard')
+      // navigate('/dashboard')
+      window.location.href = '/dashboard'
     } else {
       alert("Please check your username and password");
     }
